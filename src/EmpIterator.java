@@ -15,7 +15,7 @@ public class EmpIterator implements Iterator{
 
     @Override
     public boolean hasNext() {
-        if (company.getCurrentSize()-1<=index){
+        if (company.getCurrentSize()-1<=index||company.getArraryEmp()[index+1]!=null){
             return false;
         }
         else {

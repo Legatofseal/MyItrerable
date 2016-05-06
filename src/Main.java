@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Main {
@@ -33,22 +34,13 @@ public class Main {
         company.addEmployee(employee1);
 
         EmpPredicate empPredicate = new EmpPredicate();
-        System.out.println();
-        System.out.println(empPredicate.filterEmp(company.arrToList(),empPredicate.ageLessThan(20)));
 
-        System.out.println();
-        Object object;
-        Iterator companyIterator = company.iterator();
-        while (companyIterator.hasNext()){
-            object=companyIterator.next();
-            System.out.println(object.toString());
+        ArrayList ar = company.ageLessThan(30,empPredicate);
+        for(Object emp:ar){
+            System.out.println(emp.toString());//Полиморфизм в действии, сучечки!
+        }
 
-           if (object.equals(employee1)){
-                companyIterator.remove();
-            }
-        }//
-        System.out.println();
-       company.printAllEmployees();
+        //comp.printAllEmployees();
 
 
     }

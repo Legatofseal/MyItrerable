@@ -1,17 +1,16 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Spliterator;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.Arrays.*;
 
 /**
  * Created by Legat on 29.04.2016.
  */
-public class Company implements Iterable {
+public class Company extends ArrayList implements Iterable, Collection {
     private Employee[] arraryEmp;
     private int companySize = 10;
     private int currentSize = 0;
@@ -84,7 +83,7 @@ public class Company implements Iterable {
         currentSize++;
     }
 
-    public Employee[] getArraryEmp() {
+     Employee[] getArraryEmp() {
         return arraryEmp;
     }
 
@@ -92,9 +91,7 @@ public class Company implements Iterable {
         return currentSize;
     }
 
-    public void setCurrentSize(int currentSize) {
-        this.currentSize = currentSize;
-    }
+
 
     public boolean removeElementByIndex(int index) {
         if (index < 0 || index > currentSize - 1) {
@@ -120,49 +117,46 @@ public class Company implements Iterable {
     }
 
     public boolean removeFirstElementByPatern(Object emp) {
-        int number = -1;
+       // int number = -1;
         for (int i = 0; i < currentSize; i++) {
             if (arraryEmp[i].equals(emp)) {
-                number = i;
-                break;
+                removeElementByIndex(i);
+                return true;
 
             }
 
         }
-        if (number==-1){
-            return false;
-        }
-        else {
-            removeElementByIndex(number);
-            return true;
-        }
-
-
+        return false;
     }
 
     public boolean removeAllElemenByPatern (Object emp){
-        int number = -1;
+      boolean check  = false;
         for (int i = 0; i < currentSize; i++) {
             if (arraryEmp[i].equals(emp)) {
-                number = i;
-                removeElementByIndex(number);
+               check = true;
+                removeElementByIndex(i);
 
             }
 
         }
-        removeFirstElementByPatern(emp);
-        if (number==-1){
-            return false;
-        }
-        else {
-            return true;
-        }
+       // removeFirstElementByPatern(emp);
+     return check;
     }
 
     public ArrayList<Employee> arrToList (){
         ArrayList<Employee> arraylist= new ArrayList<Employee>(asList(arraryEmp));
         return arraylist;
     }
+
+    public ArrayList<Employee> ageLessThan(int x, EmpPredicate predicate){
+
+     ArrayList<Employee> filtedByNull = arrToList().stream().filter(p->p!=null).collect(Collectors.toCollection(ArrayList<Employee>::new));
+
+        ArrayList<Employee> filtered = filtedByNull.stream().filter(predicate.ageLessThan(x)).collect(Collectors.toCollection(ArrayList<Employee>::new));
+
+        return filtered;
+    }
+
 
 
 }

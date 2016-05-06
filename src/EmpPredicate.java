@@ -13,6 +13,7 @@ public class EmpPredicate {
     public Predicate<Employee> ageMoreThan(int x){
         return employee -> employee.getAge()>x;
     }
+    //public Predicate<Employee>
     public Predicate<Employee> ageBetween (int x, int y){
         return employee -> employee.getAge()<x||employee.getAge()>y;
     }

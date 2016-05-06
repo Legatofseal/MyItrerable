@@ -25,6 +25,10 @@ public class Employee {
         this.surname=new BigInteger(130, random).toString(32);
     }
 
+    public Employee(Employee employee) {
+
+    }
+
     public int getAge() {
         return age;
     }
@@ -56,7 +60,7 @@ public class Employee {
     @Override
     public boolean equals (Object object){
         Employee emp = (Employee)object;
-        if (this.name==emp.name){
+        if (this.name.equals(emp.getName())){
             return true;
         }
         else {
