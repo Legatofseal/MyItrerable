@@ -25,9 +25,22 @@ public class Employee {
         this.surname=new BigInteger(130, random).toString(32);
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
     public Employee(int age, String name, int salary, String surname) {
         this.age = age;
         this.name = name;
+
         this.salary = salary;
         this.surname = surname;
     }

@@ -1,6 +1,12 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Spliterator;
 import java.util.function.Consumer;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import static java.util.Arrays.*;
 
 /**
  * Created by Legat on 29.04.2016.
@@ -151,6 +157,11 @@ public class Company implements Iterable {
         else {
             return true;
         }
+    }
+
+    public ArrayList<Employee> arrToList (){
+        ArrayList<Employee> arraylist= new ArrayList<Employee>(asList(arraryEmp));
+        return arraylist;
     }
 
 
