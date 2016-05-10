@@ -5,18 +5,13 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
-       // MyArray myArray = new MyArray(10);
-       // myArray.generateArr(100);
-        //ArrPredicate arrPredicate = new ArrPredicate();
-       //System.out.println(ArrPredicate.filterInteger(myArray.arrToList(),ArrPredicate.lessThan(50).negate()));
-       /// System.out.println("");
-        //System.out.println(ArrPredicate.filterInteger(myArray.arrToList(),ArrPredicate.between(40,60)));
+
         Company company = new Company();
         Employee employee1 = new Employee(20, "Test", 300, "Testov");
         company.addEmployee(employee1);
         company.addEmployee(new Employee());
-        company.addEmployee(new Employee());
-        company.addEmployee(new Employee());
+       // company.addEmployee(new Employee());
+       // company.addEmployee(new Employee());
         Employee employee2 = new Employee(25, "Test1", 400, "Testov1");
         company.addEmployeeByIndex(employee2,2);
        //company.printAllEmployees();

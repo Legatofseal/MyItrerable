@@ -83,7 +83,7 @@ public class Company extends ArrayList implements Iterable, Collection {
         currentSize++;
     }
 
-     Employee[] getArraryEmp() {
+    Employee[] getArraryEmp() {
         return arraryEmp;
     }
 
@@ -92,19 +92,17 @@ public class Company extends ArrayList implements Iterable, Collection {
     }
 
 
-
     public boolean removeElementByIndex(int index) {
         if (index < 0 || index > currentSize - 1) {
 
             return false;
-        } else if (index==currentSize-1) {
+        } else if (index == currentSize - 1) {
 
-            arraryEmp[index]=null;
+            arraryEmp[index] = null;
             currentSize--;
             return true;
 
-        }
-        else {
+        } else {
             for (int i = index; i < currentSize - 1; i++) {
                 arraryEmp[i] = arraryEmp[i + 1];
             }
@@ -117,7 +115,7 @@ public class Company extends ArrayList implements Iterable, Collection {
     }
 
     public boolean removeFirstElementByPatern(Object emp) {
-       // int number = -1;
+        // int number = -1;
         for (int i = 0; i < currentSize; i++) {
             if (arraryEmp[i].equals(emp)) {
                 removeElementByIndex(i);
@@ -129,33 +127,38 @@ public class Company extends ArrayList implements Iterable, Collection {
         return false;
     }
 
-    public boolean removeAllElemenByPatern (Object emp){
-      boolean check  = false;
+    public boolean removeAllElemenByPatern(Object emp) {
+        boolean check = false;
         for (int i = 0; i < currentSize; i++) {
             if (arraryEmp[i].equals(emp)) {
-               check = true;
+                check = true;
                 removeElementByIndex(i);
 
             }
 
         }
-       // removeFirstElementByPatern(emp);
-     return check;
+        // removeFirstElementByPatern(emp);
+        return check;
     }
 
-    public ArrayList<Employee> arrToList (){
-        ArrayList<Employee> arraylist= new ArrayList<Employee>(asList(arraryEmp));
+    public ArrayList<Employee> arrToList() {
+        ArrayList<Employee> arraylist = new ArrayList<Employee>(asList(arraryEmp));
         return arraylist;
     }
 
-    public ArrayList<Employee> ageLessThan(int x, EmpPredicate predicate){
+    public ArrayList<Employee> ageLessThan(int x, EmpPredicate predicate) {
 
-     ArrayList<Employee> filtedByNull = arrToList().stream().filter(p->p!=null).collect(Collectors.toCollection(ArrayList<Employee>::new));
+       // ArrayList<Employee> filtedByNull = arrToList().stream().filter(p -> p != null).collect(Collectors.toCollection(ArrayList<Employee>::new));
 
-        ArrayList<Employee> filtered = filtedByNull.stream().filter(predicate.ageLessThan(x)).collect(Collectors.toCollection(ArrayList<Employee>::new));
 
+       // ArrayList<Employee> filtered = filtedByNull.stream().filter(predicate.ageLessThan(x)).collect(Collectors.toCollection(ArrayList<Employee>::new));
+        ArrayList<Employee> filtered = arrToList().stream().filter(p -> p != null).
+                filter(predicate.ageLessThan(x)).collect(Collectors.toCollection(ArrayList<Employee>::new));
         return filtered;
     }
+public void sort (){
+
+}
 
 
 
